@@ -21,23 +21,61 @@ The lecture slides on F1TENTH Follow the gap is the best visual resource for und
 
 ### IV. Implementation
 
-Implement a gap follow algorithm to make the car drive autonomously around the Levine Hall map. You can implement this node in either C++ or Python. There are two extra test maps `levine_blocked.png`, which is empty, and `levine_obs.png`, which has obstacles that are relatively hard to navigate through for you to evaluate your code on.
+Implement a gap follow algorithm to make the car drive autonomously around the Levine Hall map. You can implement this node in either C++ or Python. In the simulator, the vehicle will be tested
+in two maps provided in the gap_follow node: `levine_blocked.png`, which is empty, and `levine_obs.png`, which has obstacles that are relatively hard to navigate through for you to evaluate your code on.
+
+```bash
+1 gordon@f1sim:~/ws/gym-one/f1tenth_gym_ros/maps$ ls
+2 levine_blocked.png levine_obs.png levine.png Spielberg_map.png
+3 levine_blocked.yaml levine_obs.yaml levine.yaml Spielberg_map.yaml
+```
 
 To change the map in the simulation, add the included `.png` and `.yaml` map files to `f1tenth_gym_ros/maps` directory. Then, change `f1tenth_gym_ros/config/sim.yaml` to use your desired map.
 
-### V. Deliverables and Submission
+```bash
+1 gordon@f1sim:~/ws/gym-one/f1tenth_gym_ros/config$ emacs -nw sim.yaml # edit the sim.yaml file 
+2 >>> SNIP <<<
+3 # map parameters
+4 map_path: '/sim_ws/src/f1tenth_gym_ros/maps/levine_obs'
+5 map_img_ext: '.png'
+6 >>> SNIP <<<
+```
+**After any changes to the sim.yaml file, the docker will need to be restarted, re-entered and rebuilt.**
 
-**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `gap_follow` package and directly commit and push to the repo Github classroom created for you. Your commited code should start and run in simulation smoothly.
+### V. Deliverables and Demonstrations
 
-**Deliverable 2**: Make a screen cast of running your reactive node in the simulation. Include a link to the video on YouTube in **`SUBMISSION.md`**. The basic requirement is that your car should be able to navigate entire loops in `levine_blocked` map, and through at least most of the obstacles in `levine_obs` map. Make screen casts on both maps.
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `gap_follow` package and directly commit and push to a repo shared with your TA. Your commited code should start and run in simulation smoothly.
+
+**Simulator Demonstration**:
+A satisfactory demonstration includes the following:
+- The vehicle autonomously drives a lap around the track without collision.
+- The vehicle can successfully maneuver around obstacles on the track.
+
+In presentation of the simulator, start your gap_follow node in an adjacent terminal to the simulator
+preview. Have the node output a message to terminal indicating that the node has successfully been started.
+
+*Note: Continual terminal output delays node processing and may impact the correct operation of the vehicle.
+Provide terminal output for the successful launching of the node and no more.*
+
+**Vehicle Demonstration**: The presentation on vehicle will be held on a track set up in the classroom. The vehicle will be expected
+to complete the following tasks:
+- The vehicle autonomously drives a lap around the track without collision.
+- The vehicle can successfully make its way around obstacles on the track.
+
+Depending on implementations, changes may need to be made to account for differences present on
+vehicle that do not exist in simulation. An example might be a difference in the radius of the physical
+vehicle, which is about 6 inches in length.
+
+<!--Dr.Tessler, is this the race? I don't believe we have other on vehicle demo days for this lab.-->
+
 
 ### VI. Grading Rubric
 
 - Compilation: **10** Points
 - Implemented Find-Max Gap: **40** Points
 - Implemented Find best point: **30** Points
-- Levine blocked Video: **10** Points
-- Levine obstacles Video: **10** Points
+- Clears Levine blocked: **10** Points
+- Clears Levine obstacles: **10** Points
 
 ### VII. Extra Resources
 
